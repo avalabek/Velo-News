@@ -5,6 +5,13 @@ var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
 
+// not sure what of htis is needed
+
+var path = require('path');
+
+
+
+
 // Our scraping tools
 // Axios is a promised-based http library, similar to jQuery's Ajax method
 // It works on the client and on the server
@@ -20,14 +27,15 @@ var PORT = 3000;
 var app = express();
 
 // Configure middleware
-
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+app.use(express.static(path.join(__dirname, 'public')));
 // Use morgan logger for logging requests
 app.use(logger("dev"));
 // Use body-parser for handling form submissions
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-app.set("view engine", "handlebars");
+
 // Use express.static to serve the public folder as a static directory
 app.use(express.static("public"));
 
