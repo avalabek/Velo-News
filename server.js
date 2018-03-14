@@ -38,7 +38,7 @@ mongoose.connect("mongodb://localhost/velonews", {
 // A GET route for scraping the echojs website
 app.get("/scrape", function(req, res) {
   // First, we grab the body of the html with request
-  axios.get("https//www.reddit.com/r/Velo").then(function(response) {
+  axios.get("https://www.reddit.com/r/Velo").then(function(response) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
     var $ = cheerio.load(response.data);
 
@@ -48,7 +48,7 @@ app.get("/scrape", function(req, res) {
       var result = {};
       
       // Add the text and href of every link, and save them as properties of the result object
-      result.p.title = $(this)
+      result.title = $(this)
         .children()
         .text();
       result.link = $(this)
