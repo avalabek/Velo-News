@@ -1,4 +1,6 @@
 var express = require("express");
+var exphbs = require("express-handlebars");
+
 var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
@@ -23,6 +25,9 @@ var app = express();
 app.use(logger("dev"));
 // Use body-parser for handling form submissions
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 // Use express.static to serve the public folder as a static directory
 app.use(express.static("public"));
 
@@ -75,7 +80,8 @@ console.log(result);
 // Route for getting all Articles from the db
 app.get("/articles", function(req, res) {
   // Grab every document in the Articles collection
-  db.Article.find({})
+  // db.collection.find(<query>).limit(<number>)
+  db.Article.find({}).limit(15)
     .then(function(dbArticle) {
       // If we were able to successfully find Articles, send them back to the client
       res.json(dbArticle);
