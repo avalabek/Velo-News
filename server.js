@@ -7,21 +7,15 @@ var mongoose = require("mongoose");
 
 // not sure what of htis is needed
 
-var path = require('path');
+//  var path = require('path');
 
-
-
-
-// Our scraping tools
-// Axios is a promised-based http library, similar to jQuery's Ajax method
-// It works on the client and on the server
 var axios = require("axios");
 var cheerio = require("cheerio");
 
 // Require all models
 var db = require("./models");
 
-var PORT = 3000;
+var PORT = process.env.PORT || 3000;
 
 // Initialize Express
 var app = express();
@@ -29,7 +23,7 @@ var app = express();
 // Configure middleware
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
-app.use(express.static(path.join(__dirname, 'public')));
+//  app.use(express.static(path.join(__dirname, 'public')));
 // Use morgan logger for logging requests
 app.use(logger("dev"));
 // Use body-parser for handling form submissions
