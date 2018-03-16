@@ -7,7 +7,7 @@ var mongoose = require("mongoose");
 
 // not sure what of htis is needed
 
-//  var path = require('path');
+   var path = require('path');
 
 var axios = require("axios");
 var cheerio = require("cheerio");
@@ -23,12 +23,13 @@ var app = express();
 // Configure middleware
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
-//  app.use(express.static(path.join(__dirname, 'public')));
+// why is it going to local host and not to the dirname?
+app.use(express.static(path.join(__dirname, 'public')));
+  // app.use(express.static(path.join(__dirname, 'public')));
 // Use morgan logger for logging requests
 app.use(logger("dev"));
 // Use body-parser for handling form submissions
 app.use(bodyParser.urlencoded({ extended: true }));
-
 
 // Use express.static to serve the public folder as a static directory
 app.use(express.static("public"));
@@ -40,10 +41,12 @@ mongoose.connect("mongodb://localhost/velonews", {
   useMongoClient: true
 });
 
+
 // Routes
 
 // A GET route for scraping the echojs website
 app.get("/scrape", function(req, res) {
+  
   // First, we grab the body of the html with request
   axios.get("https://www.reddit.com/r/Velo").then(function(response) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
@@ -73,12 +76,16 @@ console.log(result);
           return res.json(err);
         });
     });
-
+    
     // If we were able to successfully scrape and save an Article, send a message to the client
     res.send("Scrape Complete");
+    
   });
 });
-
+// app.use("/", app)
+app.get("/", function(req,res){
+  res.render('index');
+});
 // Route for getting all Articles from the db
 app.get("/articles", function(req, res) {
   // Grab every document in the Articles collection

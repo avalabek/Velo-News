@@ -26,21 +26,15 @@
     </span> -->
   </div>
 </nav>
- {{!--News Cards--}} {{!--Iterate through the results and populate the handlebars injection points with the scraped titles,
-links, and article snippets.--}} {{#each result}}
-<div class="card news-section">
-  <a href="{{this.link}}">
-    <h4 class="card-header">{{this.title}}</h4>
-  </a>
-  <div class="card-block">
-    {{!--
-    <h4 class="card-title"></h4>
-    </a>--}}
-    <a href="{{this.link}}">
-      <p class="card-text">{{this.title}}</p>
-    </a>
+  {{#each result}}
+
+<div class="card" id="cardtext">
+  {{this.link}}
+  {{this.title}}
+  
+ 
     <br>
-    <a href="/articles/{{this._id}}" class="btn btn-primary">Make a note</a>
+    {{!-- <a href="/articles/{{this._id}}" class="btn btn-info">Make a note</a> --}}
   </div>
 </div>
 <br>
@@ -56,9 +50,8 @@ links, and article snippets.--}} {{#each result}}
 
       <!--First column-->
       <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-        <h6 class="text-uppercase mb-4 font-weight-bold">Company name</h6>
-        <p>Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit amet, consectetur adipisicing
-          elit.
+        <h6 class="text-uppercase mb-4 font-weight-bold">Andreya Valabek</h6>
+        <p>This project was made with Mongo and Mongoose, Node, Bootstrap, HTML and CSS.
         </p>
       </div>
       <!--/.First column-->
@@ -69,10 +62,10 @@ links, and article snippets.--}} {{#each result}}
       <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
         <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
         <p>
-          <a href="#!">Andreya Valabek</a>
+          <a href="#!"></a>
         </p>
         <p>
-          <a href="#!">@2018</a>
+          <a href="#!"></a>
         </p>
         <p>
           <a href="#!"></a>
@@ -87,7 +80,7 @@ links, and article snippets.--}} {{#each result}}
 
       <!--Third column-->
       <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-        <h6 class="text-uppercase mb-4 font-weight-bold">Useful links</h6>
+        <h6 class="text-uppercase mb-4 font-weight-bold">Links</h6>
         <p>
           <a href="https://avalabek.github.io/Portfolio">Portfolio</a>
         </p>
@@ -98,7 +91,7 @@ links, and article snippets.--}} {{#each result}}
           <a href="https://www.linkedin.com/in/andreya-valabek">Linkedin</a>
         </p>
         <p>
-          <a href="#!">Help</a>
+          <a href="#!"></a>
         </p>
       </div>
       <!--/.Third column-->
@@ -108,14 +101,18 @@ links, and article snippets.--}} {{#each result}}
       <!--Fourth column-->
       <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
         <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+      
         <p>
-          <i class="fa fa-home mr-3"></i> Chandler, Arizona, US</p>
+          <i class="fa fa-address-card mr-3"></i> Andreya Valabek</p>
         <p>
           <i class="fa fa-envelope mr-3"></i> avalabek@fastmail.net</p>
         <p>
-          <i class="fa fa-phone mr-3"></i> 602 313 9203</p>
+          <i class="fa fa-home mr-3"></i> Chandler, Arizona, US</p>
+      
         <p>
-          <i class="fa fa-print mr-3"></i> 602 313 9203</p>
+          <i class="fa fa-phone mr-3"></i> 602 313 9203</p>
+      
+      
       </div>
       <!--/.Fourth column-->
 
