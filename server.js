@@ -79,8 +79,9 @@ console.log(result);
     });
     
     // If we were able to successfully scrape and save an Article, send a message to the client
-    res.send("Scrape Complete");
-    
+    // res.send("Scrape Complete");
+    console.log("Scrape Complete");
+    res.redirect("/")
   });
 });
 // app.use("/", app)

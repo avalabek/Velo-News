@@ -15,7 +15,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Scrape</a>
+        <a class="nav-link" href="/scrape">Scrape</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Saved Articles</a>
@@ -35,28 +35,25 @@
       <div class="col-lg-6">
         <h1>latest cycling news</h1>
         <p>
-          <br>
-          <br>
-          <br>
-          <br>
-        </p>
-        <p>
-          <br>
-          <br>
-
+               
         </p>
       </div>
     </div>
   </div>
   <div id="articles"></div>
   <div id="notes"></div>
+   {{#each note}}
+   
+  {{/each}}
+  
 </div>
+
   {{#each articles}}
 
 <div class="card" id="cardtext">
-  {{this.link}}
-  {{this.title}}
-  
+  <a href="https://www.reddit.com/r/Velo/" + "{{this.link}}" target="_blank">
+  <h4 class="card-header">{{this.title}}</h4></a>
+  <a href="/articles/{{this._id}}" class="btn btn-primary">Note</a>
  
     <br>
     {{!-- <a href="/articles/{{this._id}}" class="btn btn-info">Make a note</a> --}}
