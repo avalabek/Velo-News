@@ -23,6 +23,7 @@ var app = express();
 // Configure middleware
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
+
 // why is it going to local host and not to the dirname?
 app.use(express.static(path.join(__dirname, 'public')));
   // app.use(express.static(path.join(__dirname, 'public')));
@@ -32,7 +33,7 @@ app.use(logger("dev"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Use express.static to serve the public folder as a static directory
-app.use(express.static("public"));
+// app.use(express.static("public"));
 
 // By default mongoose uses callbacks for async queries, we're setting it to use promises (.then syntax) instead
 // Connect to the Mongo DB
@@ -83,9 +84,20 @@ console.log(result);
   });
 });
 // app.use("/", app)
-app.get("/", function(req,res){
-  res.render('index');
+app.get("/", function (req, res) {
+  db.Article.find({})
+    .then(function (articles) {
+      // If we were able to successfully find Articles,
+      //  send them back to the client
+      res.render('index', {
+        articles
+      });
+    })
 });
+// console.log(articles);
+// app.get("/", function(req,res){
+//   res.render('index');
+// });
 // Route for getting all Articles from the db
 app.get("/articles", function(req, res) {
   // Grab every document in the Articles collection
