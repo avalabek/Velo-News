@@ -73,7 +73,8 @@ console.log(result);
     });
 
     // If we were able to successfully scrape and save an Article, send a message to the client
-    res.send("Scrape Complete");
+    console.log('Scrape complete')
+    res.redirect("/");
   });
 });
 
@@ -81,7 +82,7 @@ console.log(result);
 app.get("/articles", function(req, res) {
   // Grab every document in the Articles collection
   // db.collection.find(<query>).limit(<number>)
-  db.Article.find({}).limit(15)
+  db.Article.find({}).limit(100)
     .then(function(dbArticle) {
       // If we were able to successfully find Articles, send them back to the client
       res.json(dbArticle);
@@ -127,7 +128,19 @@ app.post("/articles/:id", function(req, res) {
       res.json(err);
     });
 });
-
+app.get("/notes", function (req, res) {
+  // Grab every document in the Articles collection
+  // db.collection.find(<query>).limit(<number>)
+  db.Note.find({}).limit(100)
+    .then(function (dbNote) {
+      // If we were able to successfully find Articles, send them back to the client
+      res.json(dbNote);
+    })
+    .catch(function (err) {
+      // If an error occurred, send it to the client
+      res.json(err);
+    });
+});
 // Start the server
 app.listen(PORT, function() {
   console.log("App running on port " + PORT + "!");
