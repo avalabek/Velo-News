@@ -93,7 +93,11 @@
       transform: rotate(2deg);
     }
     #findme{
-      color: white;
+      background-color: #eae672;
+      display: block;
+      margin: 40px 0 0 0;
+      text-align: left;
+      color: black;
       font-family:Muli,
       sans-serif;
       display: inline-block;
